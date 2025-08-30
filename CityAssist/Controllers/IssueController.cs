@@ -47,7 +47,7 @@ namespace CityAssist.Controllers
             {
                 var fileName = Path.GetFileName(file.FileName);
                 report.FileName = fileName;
-                // Optional: Save file locally (can guide you on that too)
+              
             }
 
             _reportService.AddReport(report);

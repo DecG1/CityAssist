@@ -5,14 +5,14 @@ namespace CityAssist.Services
 {
     public class ReportService
     {
-        private readonly ConcurrentQueue<Report> _reports = new();
+        private readonly ConcurrentQueue<ReportModel> _reports = new();
 
-        public void AddReport(Report report)
+        public void AddReport(ReportModel report)
         {
             _reports.Enqueue(report);
         }
 
-        public IEnumerable<Report> GetAllReports()
+        public IEnumerable<ReportModel> GetAllReports()
         {
             return _reports.ToList();
         }
