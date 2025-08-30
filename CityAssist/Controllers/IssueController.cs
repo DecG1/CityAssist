@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CityAssist.Models;
+using CityAssist.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CityAssist.Controllers
 {
@@ -8,15 +10,49 @@ namespace CityAssist.Controllers
         {
             return View();
         }
+
+
+        private readonly ReportService _reportService;
+
+        public IssueController(ReportService reportService)
+        {
+            _reportService = reportService;
+        }
+
+        [HttpGet]
         public IActionResult Report()
         {
-            var viewModel = new ReportPageViewModel
+            var vm = new ReportViewModel
             {
-                NewReport = new Report(),
-                ExistingReports = _reportService.GetAllReports() // assuming a service pattern
+                ExistingReports = _reportService.GetAllReports()
             };
 
-            return View(viewModel);
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Report(IFormCollection form)
+        {
+            var report = new Report
+            {
+                Location = form["Location"],
+                Category = form["Category"],
+                Description = form["Description"],
+                Notification = form["Notification"] == "on",
+                SubmitTime = DateTime.Now
+            };
+
+            var file = form.Files.GetFile("Attachment");
+            if (file != null && file.Length > 0)
+            {
+                var fileName = Path.GetFileName(file.FileName);
+                report.FileName = fileName;
+                // Optional: Save file locally (can guide you on that too)
+            }
+
+            _reportService.AddReport(report);
+
+            return RedirectToAction("Report");
         }
     }
 }

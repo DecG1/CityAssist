@@ -1,4 +1,6 @@
-﻿namespace CityAssist.Models
+﻿
+
+namespace CityAssist.Models
 {
     public class ReportViewModel
     {
