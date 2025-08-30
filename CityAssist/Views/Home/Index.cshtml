@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="menu-container">
+    <div class="menu-box text-center">
+        <img src="~/images/CityAssit_Logo.png" alt="CityAssist Logo" class="menu-logo" />
+
+        <h1 class="menu-title">CityAssist</h1>
+
+        <div class="menu-options">
+            <a asp-controller="Issue" asp-action="Report" class="menu-item">
+                <img src="~/images/issue_logo.png" class="menu-icon" alt="Report Icon" />
+                Report Issue
+            </a>
+            <a asp-controller="Events" asp-action="Index" class="menu-item">
+                <img src="~/images/Events_logo.png" class="menu-icon" alt="Events Icon" />
+                Local Events
+            </a>
+            <a asp-controller="Requests" asp-action="Status" class="menu-item">
+                <img src="~/images/Status_Logo.png" class="menu-icon" alt="Status Icon" />
+                Request Status
+            </a>
+        </div>
+    </div>
+</div>

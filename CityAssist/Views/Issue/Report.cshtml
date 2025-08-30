@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Report an Issue";
+}
+
+<div class="report-container">
+
+    <!-- Back Button in Top Corner -->
+    <div class="back-button-container">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">← Back to Main Menu</a>
+    </div>
+
+    <h2 class="text-light text-center mt-5 mb-4">Report an Issue</h2>
+
+
+    <form method="post" enctype="multipart/form-data" class="report-form">
+        <div class="form-group">
+            <label class="text-light">Location</label>
+            <input type="text" name="Location" class="form-control" placeholder="Enter location" required />
+        </div>
+
+        <div class="form-group">
+            <label class="text-light">Category</label>
+            <select name="Category" class="form-control" required>
+              
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="text-light">Description</label>
+            <textarea name="Description" class="form-control" rows="4" placeholder="Provide more details" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="text-light">Attach Media</label>
+            <input type="file" name="Attachment" class="form-control" accept="image/*,video/*" />
+        </div>
+
+        <div class="form-group dynamic-feature">
+            <label class="text-light">Notify Me of Updates</label>
+            <input type="checkbox" name="Notify" />
+        </div>
+
+        <div class="text-center mt-4">
+            <button type="submit" class="btn btn-primary">Submit Report</button>
+        </div>
+    </form>
+</div>
