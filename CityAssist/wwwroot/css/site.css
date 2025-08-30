@@ -146,4 +146,74 @@ body {
         left: 0;
         margin: 0;
     }
+.report-page {
+    padding: 20px;
+    position: relative;
+}
+
+.top-nav {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.title-spacing {
+    margin-top: 70px;
+    margin-bottom: 30px;
+}
+
+.report-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.report-form {
+    flex: 1 1 45%;
+    background-color: #1F2937;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+    .report-form .form-group {
+        margin-bottom: 20px;
+    }
+
+.report-list {
+    flex: 1 1 45%;
+    background-color: #111827;
+    padding: 25px;
+    border-radius: 10px;
+    overflow-y: auto;
+    max-height: 600px;
+}
+
+.report-item {
+    background-color: #e5e7eb;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.report-form,
+.report-list {
+    background-color: #1a2238;
+}
+
+.report-item {
+    background-color: #e9ecef;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.badge {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+}
+
+.text-light {
+    color: #f8f9fa;
+}
 

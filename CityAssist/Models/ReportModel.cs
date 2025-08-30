@@ -7,8 +7,10 @@
         public string Location { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-        public string FileName { get; set; }  // Save the file name if uploaded
+        public string FileName { get; set; } 
         public bool Notification { get; set; }
+
+        public string Status { get; set; } = "Recieved";
         public DateTime SubmitTime { get; set; } = DateTime.Now;
     }
 }

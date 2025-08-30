@@ -1,47 +1,85 @@
-﻿@{
+﻿@model CityAssist.Models.ReportViewModel
+@{
     ViewData["Title"] = "Report an Issue";
 }
 
-<div class="report-container">
-
-    <!-- Back Button in Top Corner -->
-    <div class="back-button-container">
-        <a asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">← Back to Main Menu</a>
+<div class="container mt-4">
+    <div class="row mb-3">
+        <div class="col text-start">
+            <a class="btn btn-secondary" href="@Url.Action("Index", "Home")">← Back to Main Menu</a>
+        </div>
+        <div class="col text-center">
+            <h2 class="text-dark">Report an Issue</h2>
+        </div>
+        <div class="col"></div> 
     </div>
 
-    <h2 class="text-light text-center mt-5 mb-4">Report an Issue</h2>
 
-
-    <form method="post" enctype="multipart/form-data" class="report-form">
-        <div class="form-group">
-            <label class="text-light">Location</label>
-            <input type="text" name="Location" class="form-control" placeholder="Enter location" required />
+    <div class="row">
+       
+        <div class="col-md-6">
+            <div class="report-form p-4 shadow rounded">
+                <form method="post" enctype="multipart/form-data" asp-action="Report" asp-controller="Issue">
+                    <div class="mb-3">
+                        <label for="Location" class="form-label text-light">Location</label>
+                        <input type="text" class="form-control" id="Location" name="Location" placeholder="Enter location" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="Category" class="form-label text-light">Category</label>
+                        <select class="form-control" id="Category" name="Category">
+                            <option value="Water">Water</option>
+                            <option value="Electricity">Electricity</option>
+                            <option value="Roads">Roads</option>
+                            <option value="Safety">Safety</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Description" class="form-label text-light">Description</label>
+                        <textarea class="form-control" id="Description" name="Description" placeholder="Provide more details" rows="5"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Media" class="form-label text-light">Attach Media</label>
+                        <input type="file" class="form-control" id="Media" name="Media" />
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="NotifyMe" name="Notification" />
+                        <label class="form-check-label text-light" for="NotifyMe">Notify Me of Updates</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Report</button>
+                </form>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label class="text-light">Category</label>
-            <select name="Category" class="form-control" required>
-              
-            </select>
+       
+        <div class="col-md-6">
+            <div class="report-list p-4 shadow rounded">
+                <h4 class="text-light">Your Submitted Reports</h4>
+                @if (Model.ExistingReports.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var r in Model.ExistingReports)
+                        {
+                            var statusClass = r.Status?.ToLower() switch
+                            {
+                                "received" => "bg-secondary",
+                                "in progress" => "bg-warning text-dark",
+                                "resolved" => "bg-success",
+                                _ => "bg-light text-dark"
+                            };
+                            <li class="list-group-item report-item">
+                                <strong>@(string.IsNullOrWhiteSpace(r.Category) ? "N/A" : r.Category)</strong> —
+                                @(string.IsNullOrWhiteSpace(r.Description) ? "No description" : r.Description)<br />
+                                <span class="badge @statusClass">Status: @r.Status</span><br />
+                                <small>Submitted: @r.SubmitTime.ToString("yyyy/MM/dd HH:mm")</small>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-light">No reports submitted yet.</p>
+                }
+            </div>
         </div>
-
-        <div class="form-group">
-            <label class="text-light">Description</label>
-            <textarea name="Description" class="form-control" rows="4" placeholder="Provide more details" required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label class="text-light">Attach Media</label>
-            <input type="file" name="Attachment" class="form-control" accept="image/*,video/*" />
-        </div>
-
-        <div class="form-group dynamic-feature">
-            <label class="text-light">Notify Me of Updates</label>
-            <input type="checkbox" name="Notify" />
-        </div>
-
-        <div class="text-center mt-4">
-            <button type="submit" class="btn btn-primary">Submit Report</button>
-        </div>
-    </form>
+    </div>
 </div>

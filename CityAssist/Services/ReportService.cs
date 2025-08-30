@@ -5,16 +5,18 @@ namespace CityAssist.Services
 {
     public class ReportService
     {
-        private readonly ConcurrentQueue<ReportModel> _reports = new();
+        
+        private readonly ConcurrentDictionary<string, ReportModel> _reports = new();
 
         public void AddReport(ReportModel report)
         {
-            _reports.Enqueue(report);
+            var id = Guid.NewGuid().ToString();
+            _reports[id] = report;
         }
 
         public IEnumerable<ReportModel> GetAllReports()
         {
-            return _reports.ToList();
+            return _reports.Values;
         }
     }
 }

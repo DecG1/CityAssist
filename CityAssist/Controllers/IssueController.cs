@@ -33,7 +33,7 @@ namespace CityAssist.Controllers
         [HttpPost]
         public IActionResult Report(IFormCollection form)
         {
-            var report = new Report
+            var report = new ReportModel
             {
                 Location = form["Location"],
                 Category = form["Category"],
@@ -47,7 +47,7 @@ namespace CityAssist.Controllers
             {
                 var fileName = Path.GetFileName(file.FileName);
                 report.FileName = fileName;
-              
+               
             }
 
             _reportService.AddReport(report);
