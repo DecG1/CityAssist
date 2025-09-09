@@ -13,14 +13,24 @@
                 <img src="~/images/issue_logo.png" class="menu-icon" alt="Report Icon" />
                 Report Issue
             </a>
-            <a asp-controller="Events" asp-action="Index" class="menu-item">
+
+            <a href="javascript:void(0);" onclick="featureComingSoon()" class="menu-item">
                 <img src="~/images/Events_logo.png" class="menu-icon" alt="Events Icon" />
                 Local Events
             </a>
-            <a asp-controller="Requests" asp-action="Status" class="menu-item">
+
+            <a href="javascript:void(0);" onclick="featureComingSoon()" class="menu-item">
                 <img src="~/images/Status_Logo.png" class="menu-icon" alt="Status Icon" />
                 Request Status
             </a>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <script>
+        function featureComingSoon() {
+            alert("This feature is coming soon!");
+        }
+    </script>
+}
