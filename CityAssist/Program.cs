@@ -1,5 +1,12 @@
 using CityAssist.Services;
 
+//References
+//https://www.w3schools.com/css/tryit.asp?filename=trycss_buttons_hover
+//https://www.geeksforgeeks.org/c-sharp/c-sharp-dictionary-with-examples/
+//https://learn.microsoft.com/en-us/windows/apps/develop/notifications/app-notifications/send-local-toast?tabs=desktop-msix
+//
+//
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
