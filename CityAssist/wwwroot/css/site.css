@@ -24,13 +24,27 @@ body {
 
 
 
-
 .menu-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #1f2a36; 
+    background: url('/images/Cape_Town.jpg') center center no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+    .menu-container::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6); 
+        z-index: 0;
+    }
+
+.menu-box {
+    position: relative;
+    z-index: 1;
 }
 
 
@@ -147,9 +161,16 @@ body {
         margin: 0;
     }
 .report-page {
-    padding: 20px;
+    background: url('/images/Cape_Town.jpg') center center no-repeat;
+    background-size: cover;
     position: relative;
+    padding: 20px;
+    min-height: 100vh;
+    z-index: 0;
 }
+
+
+
 
 .top-nav {
     position: absolute;

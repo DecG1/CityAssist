@@ -42,7 +42,7 @@ namespace CityAssist.Controllers
                 SubmitTime = DateTime.Now
             };
 
-            var file = form.Files.GetFile("Attachment");
+            var file = form.Files.GetFile("Media");
             if (file != null && file.Length > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);

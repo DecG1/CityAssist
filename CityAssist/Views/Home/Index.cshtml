@@ -11,17 +11,15 @@
         <div class="menu-options">
             <a asp-controller="Issue" asp-action="Report" class="menu-item">
                 <img src="~/images/issue_logo.png" class="menu-icon" alt="Report Icon" />
-                Report Issue
+                <span>Report Issue</span>
             </a>
-
             <a href="javascript:void(0);" onclick="featureComingSoon()" class="menu-item">
                 <img src="~/images/Events_logo.png" class="menu-icon" alt="Events Icon" />
-                Local Events
+                <span>Local Events</span>
             </a>
-
             <a href="javascript:void(0);" onclick="featureComingSoon()" class="menu-item">
                 <img src="~/images/Status_Logo.png" class="menu-icon" alt="Status Icon" />
-                Request Status
+                <span>Request Status</span>
             </a>
         </div>
     </div>
@@ -30,7 +28,7 @@
 @section Scripts {
     <script>
         function featureComingSoon() {
-            alert("This feature is coming soon!");
+            alert("This feature is not yet available. Stay tuned!");
         }
     </script>
 }
